@@ -1,0 +1,36 @@
+from settings import *
+from source import *
+
+# (x, y)
+
+SCREEN_SIZE = (1000, 800) 
+
+ELEVATOR_SPEED_PER_FLOOR = 0.5
+
+WAITING_TIME = 2
+
+FIRST_BUILDING_BOTTOM_LEFT = (50 * 4, SCREEN_SIZE[1] - 100)
+
+FLOOR_SIZE = (floor_height * 3, floor_height)
+
+BLACK_LINE_SCALE = (FLOOR_SIZE[0], 7)
+
+FLOOR_IMG_SCALE = (FLOOR_SIZE[0], FLOOR_SIZE[1] - BLACK_LINE_SCALE[1])
+
+SHOW_BUTTON_SCALE = (FLOOR_SIZE[1], FLOOR_SIZE[1])
+
+TIMER_SIZE = (FLOOR_SIZE[1] * 2, FLOOR_SIZE[1])
+
+ELEVATOR_SIZE = (FLOOR_SIZE[1], FLOOR_SIZE[1])
+
+IMG_ELEVATOR_SCALE = (ELEVATOR_SIZE[0], ELEVATOR_SIZE[1])
+
+
+
+
+
+SPEED = 1 / (FLOOR_SIZE[1] / ELEVATOR_SPEED_PER_FLOOR) #warning!!! devision by zero
+
+BACKGROUND = (100, 200, 255)
+
+DEFINE_BUTTON = True # False if only the button True for all floor
