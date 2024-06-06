@@ -31,7 +31,7 @@ class Building:
         initialize elevator array with elevator x, y
         """
         arr = []
-        updated_x, y = self.building_bottom_left[0] + FLOOR_SIZE[0], self.building_bottom_left[1]
+        updated_x, y = self.building_bottom_left[0]  + FLOOR_SIZE[0], self.building_bottom_left[1]
         for i in range(ELEVATOR_NUMBER_ARRAY[self.building_number]):
             arr.append(Elevator(updated_x, y, self.floors_array[0]))
             updated_x += ELEVATOR_SIZE[0]
@@ -58,7 +58,7 @@ class Building:
         """
         return the index of right side of the building (for the next building)
         """
-        return self.building_bottom_left[0] + ELEVATOR_SIZE[0] * ELEVATOR_NUMBER_ARRAY[self.building_number]
+        return self.building_bottom_left[0] + (ELEVATOR_SIZE[0] * ELEVATOR_NUMBER_ARRAY[self.building_number])
     
 
     def nearest_elevator(self, floor):
@@ -85,9 +85,10 @@ class Building:
         floor.occupied_floor(timer)
         elevator.queue.append(floor)
     
-    def check_user_input(self, event):
+    def check_user_input(self, event, scrool_x, scroll_y):
+        event = (event.pos[0] + scrool_x, event.pos[1] + scroll_y)
         for floor in self.floors_array:
-            if floor.check_user_input(event.pos):
+            if floor.check_user_input(event):
                 self.choose_elevator(floor)
 
 

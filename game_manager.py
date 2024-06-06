@@ -22,7 +22,7 @@ class GameManager:
         updated_x, y = FIRST_BUILDING_BOTTOM_LEFT[0], FIRST_BUILDING_BOTTOM_LEFT[1]
         for building_number in range(BUILDING_NUMBERS):
             arr.append(Building(building_number, updated_x, y))
-            updated_x += arr[-1].get_right_side_index()
+            updated_x = arr[-1].get_right_side_index() + (TIMER_SIZE[0] * 2)
         return arr
     
 
@@ -35,14 +35,15 @@ class GameManager:
         for building in self.building_array:
             building.drow_building(screen, font)
     
-    def update(self, mouse_pos):
+    def update(self):
         self.time_past = self.update_manager_timer() # need the time that past for calculate the timer and the elevator moovmenet
 
         for building in self.building_array:
             building.update_building(self.time_past)
     
 
-    def read_user_input(self, event):
+    def read_user_input(self, event, scrool_x, scrool_y):
             if event.type == pg.MOUSEBUTTONDOWN:
+                
                 for building in self.building_array:
-                    building.check_user_input(event)
+                    building.check_user_input(event, scrool_x, scrool_y)
