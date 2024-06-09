@@ -112,6 +112,6 @@ class Building:
         """
         min = [-1, float('inf')]
         for elevator in self.elevators_array:
-            val = elevator.get_arivel_time(floor)
+            val = elevator.get_arrival_time(floor)
             min = [elevator, val] if min[1] > val else min
         return min[0], min[1]

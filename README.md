@@ -28,3 +28,6 @@ The Elevators Project is a simulation of elevator systems, using pygame
   - settings: for user to change  :)
   - functions_and_settings: other settings => do not change!
   - source(folder): images, fonts, etc.
+
+# Algorithem and data structure:
+- 

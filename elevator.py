@@ -6,7 +6,18 @@ from functions_and_settings import *
 
 
 class Elevator:
+    """
+    responsecility:
+    - drow and update the elevator
+    - update the elevator location
+    - occupied and releas floors
 
+    API:
+    - drow_elevator()
+    - update_indexes()
+    - update_last_used()
+    - get_arrival_time()
+    """
     def __init__(self, x, y, floor_0):
         self.queue = []
         self.x = x
@@ -15,7 +26,7 @@ class Elevator:
         self.last_used = floor_0
 
 
-    def get_arivel_time(self, floor):
+    def get_arrival_time(self, floor):
         """
         return: how much time will take to arrive into the floor
         """
@@ -51,11 +62,12 @@ class Elevator:
         #pg.mixer.Sound(DING).play()
         
 
-
     def drow_elevator(self, world: pg.surface):
         world.blit(self.img_elevator, (int(self.x),int(self.y)))
         
     
+# private
+
     def distance_betwin_floors(self, number_floor_1:int, number_floor_2:int):
         """
         param: number_floor_1 -> the number of begining floore
