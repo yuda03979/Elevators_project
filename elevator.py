@@ -25,13 +25,21 @@ class Elevator:
         
 
     def update_last_used(self):
+        """
+        if call completed, the elevator starts to do the next call. it updated constantly
+        """
         if self.queue:
             if self.last_used.timer.get_timer() <= -2:
                 self.last_used.release_floor()
                 self.last_used = self.queue.pop(0)
+        else:
+            self.last_used.occupied = True
 
 
     def update_indexes(self, time_past):
+        """
+        updates the elevator indexes
+        """
         if self.y > self.last_used.y and self.y - (time_past / SPEED)  < self.last_used.y:
             self.y = self.last_used.y
         elif self.y < self.last_used.y and self.y + (time_past / SPEED)  > self.last_used.y:
@@ -44,8 +52,8 @@ class Elevator:
         
 
 
-    def drow_elevator(self, screen):
-        screen.blit(self.img_elevator, (int(self.x),int(self.y)))
+    def drow_elevator(self, world: pg.surface):
+        world.blit(self.img_elevator, (int(self.x),int(self.y)))
         
     
     def distance_betwin_floors(self, number_floor_1:int, number_floor_2:int):
@@ -69,6 +77,5 @@ class Elevator:
 
         gets the speed of the elevator on settings.py
         """
-        # floors_distance *= FLOOR_SIZE[1]
         return floors_distance * ELEVATOR_SPEED_PER_FLOOR
 

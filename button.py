@@ -11,12 +11,15 @@ class Button:
     
 
     def define_button_area(self):
+        """
+        if the button is the floor or the show_button
+        """
         if DEFINE_BUTTON:
             return(self.x, self.y, FLOOR_SIZE[0], FLOOR_SIZE[1])
         else:
             return(self.x, self.y, SHOW_BUTTON_SCALE[0], SHOW_BUTTON_SCALE[1])
 
-    def check_user_input(self, event):
+    def check_user_input(self, event: tuple):
         """
         checks if button is not green and make the call
         """
